@@ -5,15 +5,29 @@ document.addEventListener('DOMContentLoaded', () => {
   console.dir(form);
   form.addEventListener('submit', handleSubmit);
 
-  const list = document.querySelector('#reading-list');
-  list.appendChild(newParaItem);
+  const resetForm = document.querySelector('#new-item-form');
+  console.dir(reset);
+  reset.addEventListener('reset', handleReset);
 });
+
+const handleReset = function () {
+  const myNode = document.getElementById('#reading-list');
+  while (myNode.firstChild) {
+    myNode.removeChild(myNode.firstChild);
+  }
+};
 
 const handleSubmit = function () {
   event.preventDefault();
-  // const newParaItem = document.createElement('p');
-  // newParaItem.textContent = `Title: ${this.title.value} | Author: ${this.author.value} | Category: ${this.category.value}`;
-  // newParaItem.classList.add('recorded-item');
-  const submitText = document.querySelector('#reading-list');
-  submitText.textContent = `Title: ${this.title.value} | Author: ${this.author.value} | Category: ${this.category.value}`;
+  // list.appendChild('#reading-list');
+
+  const newItem = document.createElement('li');
+  newItem.textContent = `Title: ${this.title.value} | Author: ${this.author.value} | Category: ${this.category.value}`;
+  newItem.classList.add('item');
+
+  const item = document.querySelector('#reading-list');
+
+  item.appendChild(newItem);
+  // newItem.textContent = `Title: ${this.title.value} | Author: ${this.author.value} | Category: ${this.category.value}`;
+  // newItem.classList.add('display');
 };
