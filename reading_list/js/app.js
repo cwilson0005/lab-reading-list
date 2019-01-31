@@ -6,15 +6,14 @@ document.addEventListener('DOMContentLoaded', () => {
   form.addEventListener('submit', handleSubmit);
 
   const resetForm = document.querySelector('#new-item-form');
-  console.dir(reset);
-  reset.addEventListener('reset', handleReset);
+  console.dir(resetForm);
+  resetForm.addEventListener('reset', handleReset);
 });
 
 const handleReset = function () {
-  const myNode = document.getElementById('#reading-list');
-  while (myNode.firstChild) {
-    myNode.removeChild(myNode.firstChild);
-  }
+  event.preventDefault();
+  const removeItem = document.querySelectorAll('#reading-list');
+  removeItem.removeChild('item');
 };
 
 const handleSubmit = function () {
